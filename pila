@@ -1,0 +1,97 @@
+package pilas;
+
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @author ernesto 1
+ * 
+ */
+public class pilaDos {
+//agregar el abecedario en un vector pila
+
+    char pilabc[] = new char[26];
+    int tope = 0;
+
+    public void llenar() {
+        char letra = 'A';
+        for (int i = 0; i < 26; i++) {
+            if (tope < 26) {
+                pilabc[tope] = letra;
+                letra++;
+                tope++;
+            } else {
+                System.out.println("pila llena");
+                break;
+            }
+        }
+        System.out.println("valores agregados");
+    }
+
+    public void mostrar() {
+        for (int i = tope - 1; i >= 0; i--) {
+            System.out.print(" " + pilabc[i]);
+        }
+    }
+
+    public void eliminar() {
+        tope--;
+        System.out.println("dato eliminado...");
+    }
+
+    public void agregar(char w) {
+        pilabc[tope] = w; //$ *
+        tope++;
+        System.out.println("dato agregado..");
+    }
+
+    public void Aleatorio() {
+        System.out.print("\nDATOS ALEATORIOS INGRESADOS CORRECTAMENTE....\n");
+        System.out.print("\n***PILA DESORDENADA***\n");
+        for (int x = tope; x < 27; x++) {
+            int[] Random = null;
+            Random[x] = (int) (Math.random() * 25 + 65);
+            pilabc[tope] = (char) Random[x];
+            tope++;
+            System.out.print(pilabc[x] + " ");
+
+        }
+        System.out.print("\n\n");
+
+    }
+
+    public static void main(String[] args) {
+        pilaDos c = new pilaDos();
+        Scanner sc = new Scanner(System.in);
+        int opt = 0;
+        do {
+            System.out.println("\n1 llenar\n"
+                    + "2 mostrar\n"
+                    + "3 eliminar\n"
+                    + "4 agregar\n"
+                    + "5 orden aleatoreo\n"
+                    + "6 Ordenar\n"
+                    + "7 salir\n");
+            switch (opt = sc.nextInt()) {
+                case 1:
+                    c.llenar();
+                    break;
+                case 2:
+                    c.mostrar();
+                    break;
+                case 3:
+                    c.eliminar();
+                    break;
+                case 4:
+                    System.out.println("agregar");
+                    char w = sc.next().charAt(0);
+                    c.agregar(w);
+                    break;
+                case 5:
+                    c.orden aleatoreo ();
+                  break;
+            }
+        } while (opt != 7);
+    }
+}
